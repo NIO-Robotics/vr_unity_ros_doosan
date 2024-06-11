@@ -5,10 +5,10 @@
 This project aims to create a control layer between a Unity VR project and the ROS drivers of a Doosan robotic arm. It enables seamless communication between Unity and ROS, allowing real-time control and manipulation of the robotic arm using VR inputs.
 
 # Features
--Control layer transforming messages for communication between Unity and ROS.
--Support for Doosan robotic arm with ROS drivers.
--Integration with Realsense cameras and Robotiq gripper.
--Real-time control using Unity VR and ROS.
+- Control layer transforming messages for communication between Unity and ROS.
+- Support for Doosan robotic arm with ROS drivers.
+- Integration with Realsense cameras and Robotiq gripper.
+- Real-time control using Unity VR and ROS.
 
 # Installation Instructions
 
@@ -27,11 +27,11 @@ This project cannot function independently, as some launch files require other p
 This make sure that the Endpoint works with Pyhton 3.
 
 By adding these to your src folder, you should have, including this project, a folder for the following projects:
--Doosan robot
--Realsense
--Robotiq 85
--ROS TCP Endpoint
--VR Unity ROS Doosan (this project)
+- Doosan robot
+- Realsense
+- Robotiq 85
+- ROS TCP Endpoint
+- VR Unity ROS Doosan (this project)
 
 Make sure to run catkin_make after all these installations.
 
@@ -41,13 +41,13 @@ These are the commands you might want to run.
 
 ## rosrun
 
--**go_home.py**: Makes the robot go to a home position using the velocity controller of the robot. This script should not be run at the same time as other messages are published to move the robot on the /dsr_joint_velocity_controller/command ROS topic.
+- **go_home.py**: Makes the robot go to a home position using the velocity controller of the robot. This script should not be run at the same time as other messages are published to move the robot on the /dsr_joint_velocity_controller/command ROS topic.
 
 ## roslaunch
 
--**keyboard_gripper.launch**: Launches the Robotiq 2f 85 drivers and makes the gripper open or close when pressing the keyboard spacebar. Holding the spacebar will make the gripper fluctuate between the two states.
--**moveit_servo_doosan.launch**: Launches the moveit_servo real-time arm servoing drivers with the Doosan config file. This enables manipulation of the robot by using a Cartesian target for where the end-effector of the robot needs to go.
--**vr_realtime.launch**: Starts the drivers of the Realsense camera and the Robotiq gripper. It also uses the scripts that act as a control layer between Unity and ROS. Do not use it at the same time as the keyboard_gripper.launch.
+- **keyboard_gripper.launch**: Launches the Robotiq 2f 85 drivers and makes the gripper open or close when pressing the keyboard spacebar. Holding the spacebar will make the gripper fluctuate between the two states.
+- **moveit_servo_doosan.launch**: Launches the moveit_servo real-time arm servoing drivers with the Doosan config file. This enables manipulation of the robot by using a Cartesian target for where the end-effector of the robot needs to go.
+- **vr_realtime.launch**: Starts the drivers of the Realsense camera and the Robotiq gripper. It also uses the scripts that act as a control layer between Unity and ROS. Do not use it at the same time as the keyboard_gripper.launch.
 
 ## Example
 
