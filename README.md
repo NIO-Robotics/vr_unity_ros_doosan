@@ -59,3 +59,8 @@ Launch the various ROS components needed for real-time manipulation using the fo
   roslaunch unity_ros_doosan vr_realtime.launch # Launches camera, gripper, and conversion scripts. Permissions for the gripper may need adjustment (`sudo chmod 777 /dev/ttyUSB0`).
   roslaunch ros_tcp_endpoint endpoint.launch # Launch the Unity-ROS bridge
   rosrun rqt_controller_manager rqt_controller_manager # Switch Doosan controller to velocity control.
+```
+
+## Known Issue and possible fix
+
+When running the command `roslaunch unity_ros_doosan moveit_servo_doosan.launch`, it won't work if no robot is started. However, there are still errors when a robot is active. Some of these errors are not important and won't hinder how it works. If there are errors that specify missing ROS parameters, it could be because of the `launch/moveit_servo_doosan.launch` file. On line 13, you can remove the `ns="optional_parameter_namespace"` and it should resolve the problem.
