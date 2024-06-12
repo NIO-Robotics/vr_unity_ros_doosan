@@ -39,11 +39,11 @@ Make sure to run `catkin_make` after all these installations.
 
 These are the commands you might want to run.
 
-### rosrun
+### Rosrun
 
 - **go_home.py**: Makes the robot go to a home position using the velocity controller of the robot. This script should not be run at the same time as other messages are published to move the robot on the `/dsr_joint_velocity_controller/command` ROS topic.
 
-### roslaunch
+### Roslaunch
 
 - **keyboard_gripper.launch**: Launches the Robotiq 2f 85 drivers and makes the gripper open or close when pressing the keyboard spacebar. Holding the spacebar will make the gripper fluctuate between the two states.
 - **moveit_servo_doosan.launch**: Launches the moveit_servo real-time arm servoing drivers with the Doosan config file. This enables manipulation of the robot by using a Cartesian target for where the end-effector of the robot needs to go.
@@ -61,6 +61,6 @@ Launch the various ROS components needed for real-time manipulation using the fo
   rosrun rqt_controller_manager rqt_controller_manager # Switch Doosan controller to velocity control.
 ```
 
-## Known Issue and possible fix
+## Known Issues and Possible Fix
 
 When running the command `roslaunch unity_ros_doosan moveit_servo_doosan.launch`, it won't work if no robot is started. However, there are still errors when a robot is active. Some of these errors are not important and won't hinder how it works. If there are errors that specify missing ROS parameters, it could be because of the `launch/moveit_servo_doosan.launch` file. On line 13, you can remove the `ns="optional_parameter_namespace"` and it should resolve the problem.
