@@ -54,7 +54,7 @@ These are the commands you might want to run.
 Launch the various ROS components needed for real-time manipulation using the following commands in multiple command windows:
 
   ```bash
-  roslaunch dsr_ros_control doosan_interface_moveit.launch # Launch the ROS driver for real-time control.
+  roslaunch dsr_ros_control doosan_interface_moveit.launch # Launch the ROS driver for real-time control. Make sure to change the Host IP to the one of your robot.
   roslaunch unity_ros_doosan moveit_servo_doosan_cpp.launch 
   roslaunch unity_ros_doosan vr_realtime.launch # Launches camera, gripper, and conversion scripts. Permissions for the gripper may need adjustment (`sudo chmod 777 /dev/ttyUSB0`).
   roslaunch ros_tcp_endpoint endpoint.launch # Launch the Unity-ROS bridge
