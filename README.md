@@ -35,6 +35,20 @@ By adding these to your `src` folder, you should have, including this project, a
 
 Make sure to run `catkin_make` after all these installations.
 
+## From a clean install
+Specific information if you're trying this project from a clean install.
+
+- Install [ROS Noetic (desktop)](http://wiki.ros.org/noetic/Installation/Ubuntu) by following the tutorial.
+- I also suggest installing MoveIt! in a separate workspace folder. Complete the [Getting Started](https://moveit.github.io/moveit_tutorials/doc/getting_started/getting_started.html) and the [Realtime Arm Servoing](https://moveit.github.io/moveit_tutorials/doc/realtime_servo/realtime_servo_tutorial.html) sections. You'll install dependencies that other prerequisite packages might also require.
+- Import the other prerequisite packages cited in that section.
+- You might also need to install additional ROS packages, which you can do with `sudo apt-get install ros-noetic-<package>`. Install the following packages:
+  - serial
+  - ddynamic-reconfigure
+  - realsense2
+  - rqt-controller-manager
+  - moveit-servo
+- If you're unable to access `/dev/ttyUSB0` for the Robotiq gripper and encounter the error `Unable to open commport /dev/ttyUSB0`, install the following package: `pip install pymdbus==2.2.0`.
+
 ## Usage
 
 These are the commands you might want to run.
