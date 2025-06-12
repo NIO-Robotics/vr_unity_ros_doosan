@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import rospy
+import rclpy
+from rclpy.node import Node
 
 from geometry_msgs.msg import Twist, TwistStamped
 
@@ -13,33 +14,32 @@ to a TwistStamped and will then be send to moveit_servo.
 
 # # Global publisher to create once
 # pub = rospy.Publisher('/dsr01m1013/servo_server/delta_twist_cmds', TwistStamped, queue_size=1)
-pub = rospy.Publisher('/servo_server/delta_twist_cmds', TwistStamped, queue_size=1)
+# pub = rospy.Publisher('/servo_server/delta_twist_cmds', TwistStamped, queue_size=1)
 
-def callback(msg):
-    '''
-    Receive a message and transform it into a TwistStamped before sending it to moveit_servo.
-    :param msg: the linear and angular velocity. geometry_msgs.Twist
-    '''
+class Unity_moveit_twist(Node):
+
+    def __init__(self):
+        super().__init__('unity_moveit_twist')
+        self.publisher_=self.create_publisher(TwistStamped, '/servo_server/delta_twist_cmds',10)
+        
+        self.subscription = self.create_subscription(Twist, '/unity/twist', self.callback,10)
+
+        self.get_logger().info('node started: unity_moveit_twist')
     
-    # Initialize the message
-    new_twist = TwistStamped()
-    new_twist.header.stamp.secs = rospy.get_rostime().secs # Get the ROS time
-    new_twist.header.stamp.nsecs = rospy.get_rostime().nsecs # Get the ROS time decimal
-    new_twist.twist = msg
- 
-    pub.publish(new_twist)
+    def callback(self, msg: Twist):
+        twist_stamped = TwistStamped()
+        twist_stamped.header.stamp = self.get_clock().now().to_msg()
+        twist_stamped.twist = msg
+        self.publisher_.publish(twist_stamped)
 
-def convert_twist_to_twiststamped():
-    '''
-    Create the node and listen to a topic to get a Twist message
-    '''
+        
 
-    rospy.init_node('unity_twist_to_twiststamped')
-    rospy.Subscriber('/unity/twist', Twist, callback, queue_size=1)
-    rospy.spin()
+def main(args=None):
+    rclpy.init(args = args)
+    unity_moveit_twist = Unity_moveit_twist()
+    rclpy.spin(unity_moveit_twist)
+    Unity_moveit_twist.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
-    try:
-        convert_twist_to_twiststamped()
-    except rospy.ROSInterruptException:
-        pass
+    main()

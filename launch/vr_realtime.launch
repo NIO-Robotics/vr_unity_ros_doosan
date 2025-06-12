@@ -1,11 +1,7 @@
 <launch>
 
-    <!-- Add the ros_unity_fixed_rate_pointcloud2 script-->
-    <node pkg="unity_ros_doosan" name="fixed_rate_pointcloud2" type="ros_unity_fixed_rate_pointcloud2.py"/>
     <!-- Add the unity_moveit_twist script-->
     <node pkg="unity_ros_doosan" name="unity_moveit_twist" type="unity_moveit_twist.py"/>
-    <!-- Add the gripper_control script-->
-    <node pkg="unity_ros_doosan" name="gripper_control" type="gripper_control.py"/>
 
     <!-- Add the Realsense camera launch-->
     <include file="$(find realsense2_camera)/launch/rs_camera.launch">
@@ -30,7 +26,5 @@
     <!-- Add the ros_tcp_endpoint launch-->
     <!-- <include file="$(find ros_tcp_endpoint)/launch/endpoint.launch"/> -->
 
-    <!-- Add the robotiq_85_driver script-->
-    <node pkg="robotiq_85_driver" name="robotiq_driver" type="robotiq_85_driver"/>
 
 </launch>
