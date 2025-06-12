@@ -1,6 +1,6 @@
-from setuptools import find_packages, setup
 import os
 from glob import glob
+from setuptools import setup
 
 package_name = 'unity_ros_doosan'
 
