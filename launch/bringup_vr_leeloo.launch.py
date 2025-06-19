@@ -19,7 +19,7 @@ def generate_launch_description():
     return LaunchDescription([
         # Launch arguments for Doosan
         DeclareLaunchArgument('mode', default_value='real'),
-        DeclareLaunchArgument('host', default_value='192.168.50.50'),
+        DeclareLaunchArgument('host', default_value='192.168.50.100'),
         DeclareLaunchArgument('port', default_value='12345'),
         DeclareLaunchArgument('model', default_value='m1013'),
 

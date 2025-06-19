@@ -35,7 +35,7 @@ class Unity_Dsr2_msg(Node):
         msg.vel = [twist.linear.x, twist.linear.y, twist.linear.z,
                    twist.angular.x, twist.angular.y, twist.angular.z]
         msg.acc = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        msg.time = 0.1
+        msg.time = 0.04
         return msg
     
     def twist_callback(self, msg):
