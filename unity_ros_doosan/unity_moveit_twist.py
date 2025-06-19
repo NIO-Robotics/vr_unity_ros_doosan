@@ -20,7 +20,7 @@ class Unity_moveit_twist(Node):
 
     def __init__(self):
         super().__init__('unity_moveit_twist')
-        self.publisher_=self.create_publisher(TwistStamped, '/servo_server/delta_twist_cmds',10)
+        self.publisher_=self.create_publisher(TwistStamped, '/dsr_msg2/SpeedlRtStream',10)
         
         self.subscription = self.create_subscription(Twist, '/unity/twist', self.callback,10)
 
